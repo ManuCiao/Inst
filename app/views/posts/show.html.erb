@@ -1,23 +1,33 @@
-<div class='posts-wrapper row'>
-    <div class='post'>
-        <div class='post-head'>
-            <div class="name">
-                <h2><%= @post.user.username %></h2>
-            </div>
+<div class="row text-center" style="margin:50px;">
+    <div class="col-md-6">
+        <%= image_tag @post.image.url(:large), width: "50%", class: "img-thumbnail center-block" %>
+    </div><br>
+    <div class="col-md-3">
+        <div class="name">
+            <p style="text-transform:capitalize">Posted by
+                <b><%= @post.user.username %></b></p>
         </div>
-        <div class='image center-block'>
-            <%= image_tag @post.image.url(:medium), class: "img-responsive" %>
-        </div>
-        <div class="post">
-            <%= @post.name %>
-        </div>
+        <p style="text-transform:capitalize">
+            <b>Title:
+            </b><%= @post.name %></p>
+        <p>
+            <b>Comment:
+            </b>
+            <% if @post.comments %>
+            <% @post.comments.each do |comment|%>
+            <%= comment.content %>
+            <% end %>
+            <% end %>
+        </p><br>
+        <% if user_signed_in? %>
         <div class="buttons">
-            <%= link_to 'Back', :back %>
+            <%= link_to 'Back',:back, class:'btn btn-default' %>
             <% if current_user.id == @post.user.id %>
             |
-            <%= link_to 'Edit', edit_post_path(@post) %>
+            <%= link_to 'Edit', edit_post_path(@post), class:'btn btn-default' %>
             |
-            <%= link_to 'Delete', post_path(@post), method: :delete %>
+            <%= link_to 'Delete', post_path(@post), confirm: 'Are you sure?', method: :delete, class:'btn btn-default' %>
+            <% end %>
             <% end %>
         </div>
     </div>

@@ -21,3 +21,10 @@ def edit_post(name)
   fill_in 'post_name', with: name
   click_button 'Update'
 end
+
+ def add_comment(content)
+    visit '/posts'
+    click_link 'Comment'
+    fill_in 'comment_content', with: content
+    click_button 'Comment'
+  end

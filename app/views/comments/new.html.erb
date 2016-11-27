@@ -1,0 +1,12 @@
+ <div class='form-wrapper row'>
+    <%= form_for [@post, @comment], html: {multipart: true, style:"padding:30px;"}, class:"form-horizontal" do |f| %>
+    <div class='form-group text-center'>
+      <h4><%= f.label "Add a Comment here", class:"form-group"%></h4><br>
+      <div class='form-group text-center'>
+      <%= f.text_area :content, placeholder: 'Enter your comment here...', size:"49x5"%>
+    </div><br>
+    <div class='form-group text-center'>
+      <%= f.submit "Comment", class: 'btn btn-success btn-block' %>
+    </div>
+  <% end %>
+  </div>

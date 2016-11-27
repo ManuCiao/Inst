@@ -1,10 +1,90 @@
+html{
+  position:relative;
+  min-height: 100%;
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/*Normalize html and body elements,this style is just good to have*/
+html,body{
+  margin:0;
+  padding:0;
+}
+
+body {
+  background: url("images/background.jpg")no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #000;
+  margin-top:30px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  min-height: 100%;
+  position: relative;
+}
+
+.yield_container {
+  margin-top: 20px;
+  padding: 40px;
+}
+
+
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  border-bottom: 30px;
+}
+
+.nav li {
+  display: inline;
+  padding-right: 15px;
+}
+
+.nav a {
+  text-decoration: none;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1.3em;
+  color: #596365;
+}
+
+.nav a:hover {
+  text-decoration: none;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: normal;
+  line-height: 1.3em;
+  color: #000;
+}
+
+@media (min-width: 768px) {
+  .navbar-left {
+    float: left !important;
+  }
+  .navbar-right {
+    float: right !important;
+    margin-right: -15px;
+  }
+  .navbar-right ~ .navbar-right {
+    margin-right: 0;
+  }
+}
 .form-wrapper {
-    width: 30%;
-    margin: 20px auto;
+    width: 40%;
+    margin: 40px auto;
     background-color: #fff;
-    padding: 10px;
+    padding: 20px;
     border: 3px solid #eeefef;
-    border-radius: 3px;
+    border-radius: 10px;
    }
 
 .posts-wrapper {
@@ -29,85 +109,6 @@ strong {
    margin-top: 5px;
 }
 
-html{
- position:relative;
- min-height: 100%;
- font-family: sans-serif;
- -webkit-text-size-adjust: 100%;
- -ms-text-size-adjust: 100%;
-}
-
-/*Normalize html and body elements,this style is just good to have*/
-html,body{
- margin:0;
- padding:0;
-}
-
-.yield_container {
- margin-top: 20px;
- padding: 40px;
-}
-
-body {
- /*background: url("../img/wallpaper2.jpg")no-repeat center center fixed;*/
- -webkit-background-size: cover;
- -moz-background-size: cover;
- -o-background-size: cover;
- background-size: cover;
- color: #000;
- margin-top:30px;
- margin: 0 auto;
- padding-bottom: 50px;
- font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
- min-height: 100%;
- position: relative;
-}
-
-.navbar {
-list-style-type: none;
-margin: 0;
-padding: 0;
-text-align: center;
-border-bottom: 30px;
-}
-
-.nav li {
- display: inline;
- padding-right: 15px;
-}
-
-.nav a {
-text-decoration: none;
-font-size: 15px;
-font-style: normal;
-font-weight: normal;
-letter-spacing: normal;
-line-height: 1.3em;
-color: #596365;
-}
-
-.nav a:hover {
-text-decoration: none;
-font-size: 17px;
-font-style: normal;
-font-weight: bold;
-letter-spacing: normal;
-line-height: 1.3em;
-color: #000;
-}
-
-@media (min-width: 768px) {
- .navbar-left {
-   float: left !important;
- }
- .navbar-right {
-   float: right !important;
-   margin-right: -15px;
- }
- .navbar-right ~ .navbar-right {
-   margin-right: 0;
- }
-}
 
 .footer {
  font-size: 15px;
