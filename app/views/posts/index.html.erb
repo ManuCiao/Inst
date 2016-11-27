@@ -5,20 +5,20 @@
 </div>
 <% if @posts.any? %>
 <% @posts.in_groups_of(3) do |group| %>
-  <div class="row text-center">
+  <div class="row">
     <% group.compact.each do |post| %>
       <div class="col-xs-4">
             <div class="title-post">
-              <h4 style="text-transform:capitalize"><%= post.name %></h4>
+              <h4 style="text-transform:capitalize;"><%= post.name %></h4>
             </div>
             <%= link_to post_path(post) do %>
-            <%= image_tag post.image.url(:medium), width: '70%', class: "img-thumbnail rounded", alt:"125x125" %>
-            <% end %><br><br>
+            <%= image_tag post.image.url(:medium), width: '70%', class: "img-responsive rounded", alt:"125x125" %>
+            <% end %><br>
               <p>Posted by <b style="text-transform:capitalize;"><%= post.user.username %></b></p>
             <% if post.comments %>
               <% post.comments.each do |comment|%>
               <div class="comment">
-                <p><%= comment.content %> by <b style="text-transform:capitalize;"> <%= comment.user.username %></b></p>
+                <p>  <%= comment.content %> by <b style="text-transform:capitalize;"> <%= comment.user.username %></b></p>
               </div>
               <% end %>
             <% end %><br>
