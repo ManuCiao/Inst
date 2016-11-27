@@ -1,4 +1,5 @@
 <div class="row text-center" style="margin:50px;">
+
     <div class="col-md-6">
         <%= image_tag @post.image.url(:large), width: "50%", class: "img-responsive rounded center-block" %>
     </div><br>
@@ -10,25 +11,34 @@
         <p style="text-transform:capitalize">
             <b>Title:
             </b><%= @post.name %></p>
-        <p>
-            <b>Comment:
-            </b>
-            <% if @post.comments %>
-            <% @post.comments.each do |comment|%>
-            <%= comment.content %>
+
+        <p><b>Tags: </b>
+          <% unless @post.all_tags.empty? %>
+            <% @post.all_tags.each do |tag| %>
+              <%= link_to '#'+tag, , tag_path(tag) %>
             <% end %>
+          <% end %>
+        </p>
+
+        <p>
+            <b>Comment:  </b>
+            <% if @post.comments %>
+               <% @post.comments.each do |comment|%>
+                  <%= comment.content %>
+               <% end %>
             <% end %>
         </p><br>
         <% if user_signed_in? %>
         <div class="buttons">
             <%= link_to 'Back',:back, class:'btn btn-default' %>
             <% if current_user.id == @post.user.id %>
-            |
-            <%= link_to 'Edit', edit_post_path(@post), class:'btn btn-default' %>
-            |
-            <%= link_to 'Delete', post_path(@post), confirm: 'Are you sure?', method: :delete, class:'btn btn-default' %>
+              |
+              <%= link_to 'Edit', edit_post_path(@post), class:'btn btn-default' %>
+              |
+              <%= link_to 'Delete', post_path(@post), confirm: 'Are you sure?', method: :delete, class:'btn btn-default' %>
             <% end %>
-            <% end %>
+        <% end %>
         </div>
     </div>
+
 </div>

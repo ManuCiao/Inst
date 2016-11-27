@@ -22,9 +22,18 @@ def edit_post(name)
   click_button 'Update'
 end
 
- def add_comment(content)
-    visit '/posts'
-    click_link 'Comment'
-    fill_in 'comment_content', with: content
-    click_button 'Comment'
-  end
+def add_comment(content)
+  visit '/posts'
+  click_link 'Comment'
+  fill_in 'comment_content', with: content
+  click_button 'Comment'
+end
+
+def post_with_tags(name=nil, tag)
+  visit '/posts'
+  click_link 'Add a post'
+  fill_in 'post_name', with: name
+  page.attach_file('post_image', Rails.root + "app/assets/images/#{image}")
+  fill_in 'post_all_tags', with: tag
+  click_button 'Create Post'
+end

@@ -15,6 +15,11 @@
             <%= image_tag post.image.url(:medium), width: '70%', class: "img-responsive rounded", alt:"125x125" %>
             <% end %><br>
               <p>Posted by <b style="text-transform:capitalize;"><%= post.user.username %></b></p>
+              <% unless post.all_tags.empty? %>
+                <% post.all_tags.each do |tag| %>
+                  <%= link_to '#'+tag, tag_path(tag) %>
+                <% end %>
+              <% end %>
             <% if post.comments %>
               <% post.comments.each do |comment|%>
               <div class="comment">
