@@ -8,13 +8,16 @@
   <div class="row">
     <% group.compact.each do |post| %>
       <div class="col-xs-4">
+        <div class="container-post text-center">
             <div class="title-post">
-              <h4 style="text-transform:capitalize;"><%= post.name %></h4>
-            </div>
+              <b class="glyphicon glyphicon-user" aria-hidden="true"></b>
+              <b style="text-transform:capitalize;float:left;">&nbsp;&nbsp;<%= post.user.username %></b>
+              <b class="text-muted" style="float:right;"><%= time_ago_in_words(post.created_at)%></b>
+              <h5 style="text-transform:capitalize;padding:0 50px 0 50px;"><%= post.name %></h5>
+            </div><br>
             <%= link_to post_path(post) do %>
-            <%= image_tag post.image.url(:medium), width: '70%', class: "img-responsive rounded", alt:"125x125" %>
-            <% end %><br>
-              <p>Posted by <b style="text-transform:capitalize;"><%= post.user.username %></b></p>
+            <%= image_tag post.image.url(:medium), width: '70%', class: "img-responsive rounded center-block", alt:"125x125" %>
+            <% end %><br><br>
               <% unless post.all_tags.empty? %>
                 <% post.all_tags.each do |tag| %>
                   <%= link_to '#'+tag, tag_path(tag) %>
@@ -23,22 +26,27 @@
             <% if post.comments %>
               <% post.comments.each do |comment|%>
               <div class="comment">
-                <p>  <%= comment.content %> by <b style="text-transform:capitalize;"> <%= comment.user.username %></b></p>
+                <p><b style="text-transform:capitalize;"> <%= comment.user.username %></b> said &nbsp; " <%= comment.content %> "</p>
               </div>
               <% end %>
-            <% end %><br>
-            <div class="buttons">
-                <%= link_to 'Comment', new_post_comment_path(post), class:'btn btn-default'%>
+            <% end %><br><hr>
+            <div class="btn-group" style="display: inline-flex;">
+            <%= link_to new_post_comment_path(post), class:"buttonTo btn lg" do %>
+                  <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+              <% end %>
                 <% if user_signed_in? %>
                   <% if current_user.id == post.user.id %>
-                    |
-                    <%= link_to 'Edit', edit_post_path(post), class:'btn btn-default'%>
-                    |
-                    <%= link_to 'Delete', post_path(post), class:'btn btn-default', method: :delete %>
+                    <%= link_to edit_post_path(post), class:"buttonTo btn lg" do %>
+                        <b class="glyphicon glyphicon-pencil" aria-hidden="true"></b>
+                    <% end %>
+                    <%= button_to post_path(post), class:"buttonTo btn lg", method: :delete do %>
+                        <b class="glyphicon glyphicon-trash text-danger" aria-hidden="true"></b>
+                    <% end %>
                   <% end %>
                 <% end %>
             </div>
       </div>
+    </div>
     <% end %>
   </div><br>
 <% end %>

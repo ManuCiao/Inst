@@ -1,13 +1,15 @@
-<div class="row text-center" style="margin:50px;">
-
-    <div class="col-md-6">
-        <%= image_tag @post.image.url(:large), width: "50%", class: "img-responsive rounded center-block" %>
-    </div><br>
-    <div class="col-md-3">
-        <div class="name">
-            <p style="text-transform:capitalize">Posted by
-                <b><%= @post.user.username %></b></p>
-        </div>
+<div class="row text-center" style="margin:50px;font-size:25px;">
+  <div class="container-post">
+    <div class="container-post">
+        <div class="title-post">
+          <b style="text-transform:capitalize;float:left;"><i class="glyphicon glyphicon-camera" aria-hidden="true"></i>&nbsp;&nbsp;<%= @post.user.username %></b>
+          <b class="text-muted" style="float:right;"><%= time_ago_in_words(@post.created_at)%></b>
+          <h3 style="text-transform:capitalize;padding:0 50px 0 50px;"><%= @post.name %></h3>
+        </div><br>
+    <div class="picture">
+        <%= image_tag @post.image.url(:large), width: "100%", class: "img-responsive rounded center-block" %>
+    </div><br><br>
+    <div class="post-content"style="text-align:left;">
         <p style="text-transform:capitalize">
             <b>Title:
             </b><%= @post.name %></p>
@@ -15,30 +17,36 @@
         <p><b>Tags: </b>
           <% unless @post.all_tags.empty? %>
             <% @post.all_tags.each do |tag| %>
-              <%= link_to '#'+tag, , tag_path(tag) %>
+              <%= link_to '#'+tag,tag_path(tag) %>
             <% end %>
           <% end %>
         </p>
 
         <p>
-            <b>Comment:  </b>
             <% if @post.comments %>
                <% @post.comments.each do |comment|%>
-                  <%= comment.content %>
+               <div class="comment">
+                 <p><b style="text-transform:capitalize;"> <%= comment.user.username %></b> <span>said &nbsp; "<%= comment.content %>"</span></p>
+               </div>
                <% end %>
             <% end %>
         </p><br>
-        <% if user_signed_in? %>
-        <div class="buttons">
-            <%= link_to 'Back',:back, class:'btn btn-default' %>
-            <% if current_user.id == @post.user.id %>
-              |
-              <%= link_to 'Edit', edit_post_path(@post), class:'btn btn-default' %>
-              |
-              <%= link_to 'Delete', post_path(@post), confirm: 'Are you sure?', method: :delete, class:'btn btn-default' %>
-            <% end %>
-        <% end %>
-        </div>
+      </div><br><hr>
+      <div class="btn-group" style="display: inline-flex">
+          <a class="buttonTo btn lg" href="/">
+              <i class="glyphicon glyphicon-home"></i>
+          </a>
+          <% if user_signed_in? %>
+          <% if current_user.id == @post.user.id %>
+          <%= link_to edit_post_path(@post), class:"buttonTo btn lg" do %>
+          <b class="glyphicon glyphicon-pencil" aria-hidden="true"></b>
+          <% end %>
+          <%= button_to post_path(@post), class:"buttonTo btn lg", method: :delete do %>
+          <b class="glyphicon glyphicon-trash text-danger" aria-hidden="true"></b>
+          <% end %>
+          <% end %>
+          <% end %>
+      </div><br><br>
     </div>
-
+  </div>
 </div>
