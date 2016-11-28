@@ -33,3 +33,6 @@ Getting the app up and running is straight-forward. Clone the repo, install the 
 - Bootstrap
 - Javascript CoffeeScript
 - Amazon Web Services (AWS)
+
+#### Project Homepage Screenshot
+![alt text](public/homepage.png "Homepage page")
