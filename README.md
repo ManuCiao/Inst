@@ -1,23 +1,35 @@
-Instagram Challenge
+InstagrOMG
 ===================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Introduction
 
-Task
------
+This is the repo for the Makers Academy Week Eight Project. We were tasked with building a Instagram clone. In this weekend project we were tasked with creating Instagram clone in Ruby on Rails. This project has all the core functionality of a Instagram post/comment/tag pictures website.
 
-Build Instagram: Simple huh!
+## Install Instructions
 
-Bonus if you can write your own set of sensible user stories!
+- Fork and Clone repository to local machine.
+- Install [Bundler](http://bundler.io/).
+- Run `Bundle Install`.
+- Run `Rackup`.
+- Application is available on Localhost:9292 by default.
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+## Getting InstagrOMG up and running
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Getting the app up and running is straight-forward. Clone the repo, install the dependencies, and run the start script or run the server.
 
-Bonus if you can add filters!
+## Objectives
+
+- Learning foundations of Rails
+- Learning how to test Ruby on Rails applications
+
+## Technologies used
+
+- Ruby
+- Rails, ImageMagick, Paperclip, Devise
+- Capybara
+- Rspec
+- Postgresql
+- jQuery
+- Bootstrap
+- Javascript CoffeeScript
+- Amazon Web Services (AWS)
